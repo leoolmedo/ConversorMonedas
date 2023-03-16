@@ -29,7 +29,7 @@ public class Conversor {
         
         //se aplica el mismo concepto para las longitudes
         String longitudes[] = {"kilometro","metro", "decímetro", "centímetro", "milímetro","pulgada", "Pie", "yarda", "milla", "milla náutica"};
-        double equivalencia[]= {.001, 1, 10, 100, 1000, 39.3701, 3.28084, 1.09361, 0.000621371, 1852};
+        double equivalencia[]= {.001, 1, 10, 100, 1000, 39.3701, 3.28084, 1.094, 0.000621504, 1852};
         
         String temperaturas[] = {"Centígrados", "Kelvin", "Fahrenheit"};
         
@@ -41,18 +41,13 @@ public class Conversor {
         GUI.setVisible(true);
         
         //cargo los valores para los combobox (moneda predeterminado)
-        GUI.setMonedas(monedas);
-        GUI.setUnidad("Moneda:");
+        GUI.resetGUI("Conversor de monedas", "Moneda: ", monedas, "", "1");
         
         //genero las acciones de los botones
         ActionListener accionMoneda = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                GUI.setTitulo("Conversor de monedas");
-                GUI.setUnidad("Moneda:");
-                GUI.setMonedas(monedas);
-                GUI.setTxtCambio("");
-                GUI.setTxtMonto("1");
+                GUI.resetGUI("Conversor de monedas", "Moneda: ", monedas, "", "1");
                 tipoConversion= "moneda";
             }
         };
@@ -61,11 +56,7 @@ public class Conversor {
         ActionListener accionLongitud = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                GUI.setTitulo("Conversor de longitudes");
-                GUI.setUnidad("Unidad:");
-                GUI.setMonedas(longitudes);
-                GUI.setTxtCambio("");
-                GUI.setTxtMonto("1");
+                GUI.resetGUI("Conversor de longitudes", "Unidad:", longitudes, "", "1");
                 tipoConversion= "longitud";
             }
         };
@@ -73,11 +64,7 @@ public class Conversor {
         ActionListener accionTemperatura = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                GUI.setTitulo("Conversor de unidades de temperatura");
-                GUI.setUnidad("Unidad:");
-                GUI.setMonedas(temperaturas);
-                GUI.setTxtCambio("");
-                GUI.setTxtMonto("1");
+                GUI.resetGUI("Conversor de unidades de temperatura", "Unidad:", temperaturas, "","1");
                 tipoConversion= "temperatura";
             }
         };
@@ -102,7 +89,6 @@ public class Conversor {
                 switch (tipoConversion){
                     case "moneda":
                         cambio = monto/cambios[indiceOrigen]*cambios[indiceDestino];
-                        System.out.println("monto: "+ monto + "cambioOrigen: "+ cambios[indiceOrigen] + "cambioDestino: " + cambios[indiceDestino]);
                     break;
                     
                     case "longitud":

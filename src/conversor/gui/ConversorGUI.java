@@ -2,7 +2,6 @@
 package conversor.gui;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -48,15 +47,6 @@ public class ConversorGUI extends javax.swing.JFrame {
         this.btnConvertir.addActionListener(accionConvertir);
     }
     
-    public void setTitulo(String titulo){
-        this.lblTitulo.setText(titulo);
-    }
-    
-    public void setUnidad(String unidad){
-        this.lblUnidadOrigen.setText(unidad);
-        this.lblUnidadDestino.setText(unidad);
-    }
-    
     public String getTxtMonto(){
         return this.txtMonto.getText();
     }
@@ -89,8 +79,9 @@ public class ConversorGUI extends javax.swing.JFrame {
     }
     
     public void resetGUI(String titulo, String unidad, String monedas[], String txtCambio, String txtMonto){
-        this.setTitulo(titulo);
-        this.setUnidad(unidad);
+        this.lblTitulo.setText(titulo);
+        this.lblUnidadOrigen.setText(unidad);
+        this.lblUnidadDestino.setText(unidad);
         this.setMonedas(monedas);
         this.txtCambio.setText(txtCambio);
         this.txtMonto.setText(txtMonto);
